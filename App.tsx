@@ -8,11 +8,13 @@ import {
   useFonts,
 } from "@expo-google-fonts/roboto";
 
+import { Box, NativeBaseProvider } from "native-base";
+
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
   return (
-    <View>
+    <NativeBaseProvider>
       <StatusBar
         backgroundColor={"transparent"}
         barStyle={"light-content"}
@@ -20,11 +22,11 @@ export default function App() {
       />
       {fontsLoaded ? (
         <>
-          <Text>Hello, world!</Text>
+          <Box>Hello, world!</Box>
         </>
       ) : (
         <></>
       )}
-    </View>
+    </NativeBaseProvider>
   );
 }
