@@ -1,5 +1,5 @@
 //react
-import { Text, View } from "react-native";
+import { Text, View, StatusBar } from "react-native";
 
 //fonts
 import {
@@ -13,6 +13,11 @@ export default function App() {
 
   return (
     <View>
+      <StatusBar
+        backgroundColor={"transparent"}
+        barStyle={"light-content"}
+        translucent
+      />
       {fontsLoaded ? (
         <>
           <Text>Hello, world!</Text>
