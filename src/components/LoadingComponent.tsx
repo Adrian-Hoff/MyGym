@@ -5,11 +5,11 @@ export function LoadingComponent() {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    bg: "#202024",
+    bg: "gray.700",
   };
 
   const spinner = {
-    color: "#2020fa",
+    color: "violet.600",
     size: "lg",
   };
 
