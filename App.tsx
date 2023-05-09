@@ -17,6 +17,9 @@ import { Box, NativeBaseProvider } from "native-base";
 //components
 import { LoadingComponent } from "@components/LoadingComponent";
 
+//screens
+import { SignInScreen } from "@screens/SignInScreen";
+
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
@@ -27,15 +30,7 @@ export default function App() {
         barStyle={"light-content"}
         translucent
       />
-      {fontsLoaded ? (
-        <>
-          <Box>Hello, world!</Box>
-        </>
-      ) : (
-        <>
-          <LoadingComponent />
-        </>
-      )}
+      {fontsLoaded ? <SignInScreen></SignInScreen> : <LoadingComponent />}
     </NativeBaseProvider>
   );
 }
