@@ -1,5 +1,8 @@
 //react-navigation
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import {
+  createMaterialBottomTabNavigator,
+  MaterialBottomTabScreenProps,
+} from "@react-navigation/material-bottom-tabs";
 
 //screens
 import { DashboardScreen } from "@screens/DashboardScreen";
@@ -13,6 +16,9 @@ type AppRoutesTypeProps = {
   ProfileScreen: undefined;
   ExercisesScreen: undefined;
 };
+
+export type AppNavigationRoutesProps =
+  MaterialBottomTabScreenProps<AppRoutesTypeProps>;
 
 export function AppRoutes() {
   const Tab = createMaterialBottomTabNavigator<AppRoutesTypeProps>();
