@@ -1,3 +1,8 @@
+//react-navigation
+import { useNavigation } from "@react-navigation/native";
+
+import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
+
 //native-base
 import {
   VStack,
@@ -18,6 +23,12 @@ import { InputComponent } from "@components/InputComponent";
 import { ButtonComponent } from "@components/ButtonComponent";
 
 export function SignInScreen() {
+  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+
+  function hadleNewAccount() {
+    navigation.navigate("SignUpScreen");
+  }
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
@@ -55,7 +66,11 @@ export function SignInScreen() {
           <Text color={"gray.100"} fontSize={"sm"} mb={3} fontFamily={"body"}>
             Don't you have an account?
           </Text>
-          <ButtonComponent title="Create Account" variant={"outline"} />
+          <ButtonComponent
+            title="Create Account"
+            variant={"outline"}
+            onPress={hadleNewAccount}
+          />
         </Center>
       </VStack>
     </ScrollView>
