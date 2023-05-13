@@ -1,9 +1,8 @@
 import { Button, IButtonProps, Text } from "native-base";
 
-interface Props {
+type Props = IButtonProps & {
   title: string;
-  rest?: IButtonProps;
-}
+};
 
 export function ButtonComponent({ title, ...rest }: Props) {
   return (
