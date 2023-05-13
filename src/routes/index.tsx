@@ -14,7 +14,7 @@ export function Routes() {
   theme.colors.background = nativeBaseTheme.colors.gray[700];
 
   return (
-    <Box flex={1} bg={"gray.700"}>
+    <Box flex={1} bg={"gray.700"} paddingX={5}>
       <NavigationContainer theme={theme}>
         <AppRoutes />
       </NavigationContainer>
