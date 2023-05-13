@@ -1,3 +1,6 @@
+//react-navigation
+import { useNavigation } from "@react-navigation/native";
+
 //native-base
 import {
   VStack,
@@ -18,6 +21,12 @@ import { InputComponent } from "@components/InputComponent";
 import { ButtonComponent } from "@components/ButtonComponent";
 
 export function SignUpScreen() {
+  const navigation = useNavigation();
+
+  function handleGoBack() {
+    navigation.goBack();
+  }
+
   return (
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
@@ -54,7 +63,12 @@ export function SignUpScreen() {
 
         <ButtonComponent title="Create Account" />
 
-        <ButtonComponent mt={24} title="Back To Login" variant={"outline"} />
+        <ButtonComponent
+          mt={24}
+          title="Back To Login"
+          variant={"outline"}
+          onPress={handleGoBack}
+        />
       </VStack>
     </ScrollView>
   );
