@@ -37,6 +37,7 @@ export function SignInScreen() {
       <VStack flex={1} px={10} pb={16}>
         <Image
           source={BackgroundImg}
+          defaultSource={BackgroundImg}
           alt="SignInScreen/ people trainning"
           resizeMode="contain"
           position={"absolute"}
