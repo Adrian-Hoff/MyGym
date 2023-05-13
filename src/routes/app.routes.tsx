@@ -24,7 +24,7 @@ export function AppRoutes() {
   const Tab = createMaterialBottomTabNavigator<AppRoutesTypeProps>();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator labeled={false}>
       <Tab.Screen name="DashboardScreen" component={DashboardScreen} />
       <Tab.Screen name="HistoryScreen" component={HistoryScreen} />
       <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
