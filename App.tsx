@@ -1,6 +1,9 @@
 //react
 import { StatusBar } from "react-native";
 
+//routes
+import { Routes } from "@routes/index";
+
 //theme
 import { THEME } from "./src/theme/index";
 
@@ -13,13 +16,6 @@ import {
 
 //native-base
 import { Box, NativeBaseProvider } from "native-base";
-
-//components
-import { LoadingComponent } from "@components/LoadingComponent";
-
-//screens
-import { SignInScreen } from "@screens/SignInScreen";
-import { Routes } from "@routes/index";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
