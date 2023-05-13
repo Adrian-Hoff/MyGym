@@ -21,7 +21,7 @@ export function AppRoutes() {
     <Tab.Navigator>
       <Tab.Screen name="DashboardScreen" component={DashboardScreen} />
       <Tab.Screen name="HistoryScreen" component={HistoryScreen} />
-      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />{" "}
+      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
       <Tab.Screen name="ExercisesScreen" component={ExercisesScreen} />
     </Tab.Navigator>
   );
