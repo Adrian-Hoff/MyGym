@@ -9,7 +9,7 @@ import { UserPhotoComponent } from "./UserPhotoComponent";
 import { TouchableOpacity } from "react-native";
 export function DashboardHeaderComponent() {
   return (
-    <HStack pt={16} pb={16} px={3} space={4} alignItems={"center"}>
+    <HStack pt={16} pb={8} px={3} space={4} alignItems={"center"}>
       <UserPhotoComponent
         size={16}
         alt="Photo"
