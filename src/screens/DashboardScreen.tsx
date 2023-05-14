@@ -51,7 +51,7 @@ export function DashboardScreen() {
             Exercises
           </Heading>
           <Text color={"violet.900"} fontSize={"sm"}>
-            4
+            {exercises.length}
           </Text>
         </HStack>
 
