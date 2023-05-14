@@ -19,7 +19,7 @@ export function DashboardHeaderComponent() {
       />
       <VStack flex={1}>
         <Text color={"white"} fontStyle={"italic"} fontSize={"lg"}>
-          Olá,
+          Hello,
         </Text>
 
         <Heading color={"violet.600"} fontSize={"lg"}>
