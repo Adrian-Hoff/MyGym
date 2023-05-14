@@ -2,7 +2,7 @@ import { DashboardHeaderComponent } from "@components/DashboardHeaderComponents"
 import { MuscularGroupComponent } from "@components/MuscularGroupComponent";
 import { FlatList, HStack, Heading, Text, VStack } from "native-base";
 import { useState } from "react";
-import { ExerciseCardComponent } from "./ExerciseCardComponent";
+import { ExerciseCardComponent } from "../components/ExerciseCardComponent";
 
 export function DashboardScreen() {
   const [groups, setGroups] = useState<string[]>([
