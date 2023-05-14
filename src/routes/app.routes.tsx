@@ -48,10 +48,11 @@ export function AppRoutes() {
         borderRadius: 10,
         borderColor: colors.gray[600],
         borderWidth: 4,
-
-        bottom: 20,
+        width: "92%",
+        left: "4%",
+        bottom: 16,
         backgroundColor: colors.gray[600],
-        height: Platform.OS === "android" ? "auto" : 96,
+        height: Platform.OS === "android" ? "auto" : "auto",
       }}
     >
       <Tab.Screen
