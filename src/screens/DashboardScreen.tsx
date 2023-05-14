@@ -19,6 +19,7 @@ export function DashboardScreen() {
     <VStack flex={1}>
       <DashboardHeaderComponent />
       <FlatList
+        _contentContainerStyle={{ pl: 5, pr: 2 }}
         mb={10}
         flexGrow={0}
         keyExtractor={(item) => item}
@@ -33,14 +34,17 @@ export function DashboardScreen() {
           />
         )}
       />
-      <HStack justifyContent={"space-between"}>
-        <Heading color={"gray.200"} fontSize={"md"}>
-          Exercises
-        </Heading>
-        <Text color={"violet.900"} fontSize={"sm"}>
-          4
-        </Text>
-      </HStack>
+
+      <VStack flex={1} space={8} px={5}>
+        <HStack justifyContent={"space-between"}>
+          <Heading color={"gray.200"} fontSize={"md"}>
+            Exercises
+          </Heading>
+          <Text color={"violet.900"} fontSize={"sm"}>
+            4
+          </Text>
+        </HStack>
+      </VStack>
     </VStack>
   );
 }
