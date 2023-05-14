@@ -1,6 +1,6 @@
 import { DashboardHeaderComponent } from "@components/DashboardHeaderComponents";
 import { MuscularGroupComponent } from "@components/MuscularGroupComponent";
-import { Center, FlatList, HStack, Text, VStack } from "native-base";
+import { Center, FlatList, HStack, Heading, Text, VStack } from "native-base";
 import { useState } from "react";
 
 export function DashboardScreen() {
@@ -33,12 +33,14 @@ export function DashboardScreen() {
           />
         )}
       />
-      {/* <HStack>
-        <MuscularGroupComponent variant="SELECTED" name="Chest" />
-        <MuscularGroupComponent variant="NOT_SELECTED" name="Arms" />
-        <MuscularGroupComponent variant="NOT_SELECTED" name="Legs" />
-        <MuscularGroupComponent variant="NOT_SELECTED" name="forearms" />
-      </HStack> */}
+      <HStack justifyContent={"space-between"}>
+        <Heading color={"gray.200"} fontSize={"md"}>
+          Exercises
+        </Heading>
+        <Text color={"violet.900"} fontSize={"sm"}>
+          4
+        </Text>
+      </HStack>
     </VStack>
   );
 }
