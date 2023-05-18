@@ -20,6 +20,7 @@ import { DashboardScreen } from "@screens/DashboardScreen";
 import { ExercisesScreen } from "@screens/ExercisesScreen";
 import { HistoryScreen } from "@screens/HistoryScreen";
 import { ProfileScreen } from "@screens/ProfileScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 type AppRoutesTypeProps = {
   DashboardScreen: undefined;
@@ -35,25 +36,30 @@ export function AppRoutes() {
   const { sizes, colors } = useTheme();
   const iconSize = sizes[6];
 
-  const Tab = createMaterialBottomTabNavigator<AppRoutesTypeProps>();
+  const Tab = createBottomTabNavigator<AppRoutesTypeProps>();
 
   return (
     <Tab.Navigator
-      labeled={false}
-      initialRouteName="DashboardScreen"
-      activeColor={colors.violet[600]}
-      inactiveColor={colors.gray[200]}
-      // shifting={true}
-      barStyle={{
-        borderRadius: 10,
-        borderColor: colors.gray[600],
-        borderWidth: 4,
-        width: "92%",
-        left: "4%",
-        bottom: 16,
-        backgroundColor: colors.gray[600],
-        height: Platform.OS === "android" ? "auto" : "auto",
+      screenOptions={{
+        headerShown: false,
+        tabBarShowLabel: false,
+        tabBarStyle: {
+          borderTopWidth: 0,
+          height: 76,
+
+          borderColor: colors.gray[600],
+
+          backgroundColor: colors.gray[600],
+        },
       }}
+      // labeled={false}
+      initialRouteName="DashboardScreen"
+      // activeColor={colors.violet[600]}
+      // inactiveColor={colors.gray[200]}
+      // shifting={true}
+      // barStyle={{
+
+      // }}
     >
       <Tab.Screen
         options={{
@@ -63,6 +69,7 @@ export function AppRoutes() {
             <HistorySVG fill={color} height={iconSize} width={iconSize} />
           ),
           tabBarAccessibilityLabel: "ok",
+          tabBarActiveTintColor: colors.violet[500],
         }}
         name="HistoryScreen"
         component={HistoryScreen}
@@ -74,6 +81,7 @@ export function AppRoutes() {
           tabBarIcon: ({ color }) => (
             <DashboardSVG fill={color} height={iconSize} width={iconSize} />
           ),
+          tabBarActiveTintColor: colors.violet[500],
         }}
         name="DashboardScreen"
         component={DashboardScreen}
@@ -85,12 +93,19 @@ export function AppRoutes() {
           tabBarIcon: ({ color }) => (
             <ProfileSVG fill={color} height={iconSize} width={iconSize} />
           ),
-          tabBarBadge: true,
+          tabBarActiveTintColor: colors.violet[500],
+          // tabBarBadge: true,
         }}
         name="ProfileScreen"
         component={ProfileScreen}
       />
-      {/* <Tab.Screen name="ExercisesScreen" component={ExercisesScreen} /> */}
+      <Tab.Screen
+        name="ExercisesScreen"
+        options={{
+          tabBarButton: () => null,
+        }}
+        component={ExercisesScreen}
+      />
     </Tab.Navigator>
   );
 }
