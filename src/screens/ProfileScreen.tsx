@@ -26,7 +26,7 @@ export function ProfileScreen() {
     <VStack flex={1}>
       <ScreenHeaderComponent title="Profile" />
 
-      <ScrollView contentContainerStyle={{ paddingBottom: 36 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 86 }}>
         <Center mt={6} px={5}>
           {photoIsLoading ? (
             <Skeleton
