@@ -39,6 +39,7 @@ export function HistoryScreen() {
           </Box>
         )}
         px={5}
+        ListFooterComponent={<Box height={86}></Box>}
         contentContainerStyle={
           exercises.length === 0 && { flex: 1, justifyContent: "center" }
         }
@@ -49,6 +50,7 @@ export function HistoryScreen() {
           </Text>
         )}
         showsVerticalScrollIndicator={false}
+        style={{}}
       />
     </VStack>
   );
