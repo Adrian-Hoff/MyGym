@@ -69,7 +69,7 @@ export function DashboardScreen() {
           )}
           showsVerticalScrollIndicator={false}
           _contentContainerStyle={{
-            paddingBottom: 10,
+            paddingBottom: 86,
           }}
         />
       </VStack>
