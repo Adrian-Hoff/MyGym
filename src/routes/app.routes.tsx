@@ -44,12 +44,19 @@ export function AppRoutes() {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          borderTopWidth: 0,
           height: 76,
+          position: "absolute",
+          bottom: 0,
+          opacity: 0.9,
 
-          borderColor: colors.gray[600],
+          borderTopWidth: 0,
+          borderBottomWidth: 0,
+          // height: 76,
 
-          backgroundColor: colors.gray[600],
+          // borderColor: colors.gray[600],
+
+          backgroundColor: "#121212",
+          shadowColor: "transparent",
         },
       }}
       // labeled={false}
