@@ -48,7 +48,7 @@ export function ProfileScreen() {
 
           <TouchableOpacity>
             <Text
-              color="green.500"
+              color="violet.500"
               fontWeight="bold"
               fontSize="md"
               mt={2}
