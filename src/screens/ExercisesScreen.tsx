@@ -3,15 +3,20 @@ import { useNavigation } from "@react-navigation/native";
 
 //svg
 import BodySVG from "@assets/body.svg";
+import SeriesSVG from "@assets/series.svg";
+import RepetitionsSVG from "@assets/repetitions.svg";
 
 //icons
 import { Feather } from "@expo/vector-icons";
+
+//compnents
+import { ButtonComponent } from "@components/ButtonComponent";
 
 //react-native
 import { TouchableOpacity } from "react-native";
 
 //native-base
-import { Box, HStack, Heading, Icon, Text, VStack } from "native-base";
+import { Box, HStack, Heading, Icon, Image, Text, VStack } from "native-base";
 
 export function ExercisesScreen() {
   const navigation = useNavigation();
@@ -22,7 +27,7 @@ export function ExercisesScreen() {
 
   return (
     <VStack flex={1}>
-      <VStack px={5} pt={12} pb={8} bgColor={"gray.600"}>
+      <VStack px={5} pt={12} pb={8}>
         <Box flexDir={"row"}>
           <TouchableOpacity onPress={HandleGoBack}>
             <Icon
@@ -49,6 +54,45 @@ export function ExercisesScreen() {
             <Text color={"gray.200"}>Chest</Text>
           </HStack>
         </HStack>
+      </VStack>
+
+      <VStack p={5}>
+        <Image
+          w={"full"}
+          height={80}
+          alt="image"
+          source={{
+            uri: "https://www.origym.com.br/upload/remada-unilateral-3.png",
+          }}
+          mb={4}
+          // resizeMode="cover"
+          rounded={"lg"}
+          overflow={"hidden"}
+        />
+
+        <VStack
+          space={5}
+          p={4}
+          borderWidth={0.5}
+          borderColor={"gray.500"}
+          rounded={"md"}
+        >
+          <HStack justifyContent={"space-between"}>
+            <HStack>
+              <SeriesSVG />
+              <Text color={"gray.200"} ml={2}>
+                3 Sets
+              </Text>
+            </HStack>
+            <HStack>
+              <RepetitionsSVG />
+              <Text color={"gray.200"} ml={2}>
+                12 Reps
+              </Text>
+            </HStack>
+          </HStack>
+          <ButtonComponent title="Mark As Done" />
+        </VStack>
       </VStack>
     </VStack>
   );
