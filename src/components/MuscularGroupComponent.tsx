@@ -20,11 +20,12 @@ export function MuscularGroupComponent({
       justifyContent={"center"}
       rounded={"md"}
       borderWidth={1}
-      borderColor={variant === "SELECTED" ? "violet.600" : "gray.300"}
+      bg={"gray.600"}
+      borderColor={variant === "SELECTED" ? "violet.500" : "gray.700"}
       {...rest}
     >
       <Text
-        color={variant === "SELECTED" ? "violet.600" : "gray.300"}
+        color={variant === "SELECTED" ? "violet.500" : "gray.300"}
         textTransform={"uppercase"}
         fontSize={"xs"}
         fontWeight={"bold"}
