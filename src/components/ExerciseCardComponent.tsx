@@ -33,7 +33,7 @@ export function ExerciseCardComponent({
   ...rest
 }: Props) {
   return (
-    <TouchableOpacity>
+    <TouchableOpacity {...rest}>
       <HStack p={1} mb={3} alignItems={"center"}>
         <Image
           source={{
