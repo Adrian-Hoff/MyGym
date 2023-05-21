@@ -18,16 +18,20 @@ export function DashboardHeaderComponent() {
         }}
       />
       <VStack flex={1}>
-        <Text color={"white"} fontStyle={"italic"} fontSize={"lg"}>
+        <Text color={"gray.200"} fontStyle={"italic"} fontSize={"md"}>
           Hello,
         </Text>
 
-        <Heading color={"violet.600"} fontSize={"lg"}>
+        <Heading
+          color={"gray.100"}
+          fontFamily={"Roboto_400Regular"}
+          fontSize={"lg"}
+        >
           Adrian Hoff
         </Heading>
       </VStack>
       <TouchableOpacity>
-        <Icon as={MaterialIcons} name="logout" color={"error.900"} size={7} />
+        <Icon as={MaterialIcons} name="logout" color={"gray.300"} size={7} />
       </TouchableOpacity>
       {/* <MaterialIcons name="logout" color={"#bb2033"} size={28} /> */}
     </HStack>
