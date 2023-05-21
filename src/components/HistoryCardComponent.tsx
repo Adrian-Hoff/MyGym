@@ -3,33 +3,33 @@ import { Box, Heading, HStack, Text, VStack } from "native-base";
 
 export function HistoryCardComponent() {
   return (
-    <HStack
+    <VStack
       w="full"
-      px={4}
-      py={4}
-      mb={3}
+      p={4}
+      mb={2}
+      space={2}
       borderWidth={0.5}
       borderColor={"gray.500"}
       rounded="md"
-      alignItems="center"
-      justifyContent="space-between"
     >
-      <VStack>
-        <Heading color="gray.100" fontSize="lg" textTransform="capitalize">
-          Push up
-        </Heading>
+      <Heading
+        color="gray.100"
+        fontSize="lg"
+        textTransform="capitalize"
+        numberOfLines={1}
+      >
+        Push up
+      </Heading>
 
+      <HStack w={"full"} justifyContent={"space-between"}>
         <Text color="gray.200" fontSize="sm" numberOfLines={1}>
           Backward
         </Text>
-      </VStack>
 
-      <Box>
-        <Box flex={1}></Box>
         <Text color="gray.200" fontSize="sm">
           14:34
         </Text>
-      </Box>
-    </HStack>
+      </HStack>
+    </VStack>
   );
 }
