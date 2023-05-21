@@ -16,7 +16,16 @@ import { ButtonComponent } from "@components/ButtonComponent";
 import { TouchableOpacity } from "react-native";
 
 //native-base
-import { Box, HStack, Heading, Icon, Image, Text, VStack } from "native-base";
+import {
+  Box,
+  HStack,
+  Heading,
+  Icon,
+  Image,
+  ScrollView,
+  Text,
+  VStack,
+} from "native-base";
 
 export function ExercisesScreen() {
   const navigation = useNavigation();
@@ -55,45 +64,46 @@ export function ExercisesScreen() {
           </HStack>
         </HStack>
       </VStack>
+      <ScrollView _contentContainerStyle={{ pb: "24" }}>
+        <VStack p={5}>
+          <Image
+            w={"full"}
+            height={80}
+            alt="image"
+            source={{
+              uri: "https://www.origym.com.br/upload/remada-unilateral-3.png",
+            }}
+            mb={4}
+            // resizeMode="cover"
+            rounded={"lg"}
+            overflow={"hidden"}
+          />
 
-      <VStack p={5}>
-        <Image
-          w={"full"}
-          height={80}
-          alt="image"
-          source={{
-            uri: "https://www.origym.com.br/upload/remada-unilateral-3.png",
-          }}
-          mb={4}
-          // resizeMode="cover"
-          rounded={"lg"}
-          overflow={"hidden"}
-        />
-
-        <VStack
-          space={5}
-          p={4}
-          borderWidth={0.5}
-          borderColor={"gray.500"}
-          rounded={"md"}
-        >
-          <HStack justifyContent={"space-between"}>
-            <HStack>
-              <SeriesSVG />
-              <Text color={"gray.200"} ml={2}>
-                3 Sets
-              </Text>
+          <VStack
+            space={5}
+            p={4}
+            borderWidth={0.5}
+            borderColor={"gray.500"}
+            rounded={"md"}
+          >
+            <HStack justifyContent={"space-between"}>
+              <HStack>
+                <SeriesSVG />
+                <Text color={"gray.200"} ml={2}>
+                  3 Sets
+                </Text>
+              </HStack>
+              <HStack>
+                <RepetitionsSVG />
+                <Text color={"gray.200"} ml={2}>
+                  12 Reps
+                </Text>
+              </HStack>
             </HStack>
-            <HStack>
-              <RepetitionsSVG />
-              <Text color={"gray.200"} ml={2}>
-                12 Reps
-              </Text>
-            </HStack>
-          </HStack>
-          <ButtonComponent title="Mark As Done" />
+            <ButtonComponent title="Mark As Done" />
+          </VStack>
         </VStack>
-      </VStack>
+      </ScrollView>
     </VStack>
   );
 }
