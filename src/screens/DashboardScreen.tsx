@@ -3,6 +3,8 @@ import { MuscularGroupComponent } from "@components/MuscularGroupComponent";
 import { FlatList, HStack, Heading, Text, VStack } from "native-base";
 import { useState } from "react";
 import { ExerciseCardComponent } from "../components/ExerciseCardComponent";
+import { useNavigation } from "@react-navigation/native";
+import { AppNavigationRoutesProps } from "@routes/app.routes";
 
 export function DashboardScreen() {
   const [groups, setGroups] = useState<string[]>([
@@ -23,6 +25,12 @@ export function DashboardScreen() {
   ]);
 
   const [selected, setSelected] = useState("chest");
+
+  const navigation = useNavigation<AppNavigationRoutesProps>();
+
+  function HandleExerciseDetails() {
+    navigation.navigate("ExercisesScreen");
+  }
 
   return (
     <VStack flex={1}>
@@ -65,6 +73,7 @@ export function DashboardScreen() {
               size={16}
               alt="image"
               uri="https://www.origym.com.br/upload/remada-unilateral-3.png"
+              onPress={HandleExerciseDetails}
             />
           )}
           showsVerticalScrollIndicator={false}
