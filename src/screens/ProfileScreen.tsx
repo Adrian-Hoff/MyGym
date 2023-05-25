@@ -25,6 +25,7 @@ const PHOTO_SIZE = 32;
 
 export function ProfileScreen() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
+  const [userPhoto, setUserPhoto] = useState<string>();
 
   async function handleSelectUserPhoto() {
     const photoSelected = await ImagePicker.launchImageLibraryAsync({
@@ -34,6 +35,12 @@ export function ProfileScreen() {
       allowsEditing: true,
       // base64: true,
     });
+
+    if (photoSelected.canceled) {
+      return;
+    }
+
+    setUserPhoto(photoSelected.assets[0].uri);
   }
   return (
     <VStack flex={1}>
@@ -52,7 +59,7 @@ export function ProfileScreen() {
           ) : (
             <UserPhotoComponent
               source={{
-                uri: "https://avatarfiles.alphacoders.com/759/75944.jpg",
+                uri: userPhoto,
               }}
               alt="Image"
               size={PHOTO_SIZE}
