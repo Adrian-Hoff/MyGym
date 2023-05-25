@@ -28,19 +28,25 @@ export function ProfileScreen() {
   const [userPhoto, setUserPhoto] = useState<string>();
 
   async function handleSelectUserPhoto() {
-    const photoSelected = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      quality: 1,
-      aspect: [1, 1],
-      allowsEditing: true,
-      // base64: true,
-    });
+    setPhotoIsLoading(true);
+    try {
+      const photoSelected = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        aspect: [1, 1],
+        allowsEditing: true,
+        // base64: true,
+      });
 
-    if (photoSelected.canceled) {
-      return;
+      if (photoSelected.canceled) {
+        return;
+      }
+      photoSelected.assets[0].uri && setUserPhoto(photoSelected.assets[0].uri);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setPhotoIsLoading(false);
     }
-
-    setUserPhoto(photoSelected.assets[0].uri);
   }
   return (
     <VStack flex={1}>
