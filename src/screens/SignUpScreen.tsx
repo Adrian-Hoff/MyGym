@@ -30,7 +30,11 @@ type FormDataProps = {
 };
 
 export function SignUpScreen() {
-  const { control, handleSubmit } = useForm<FormDataProps>();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormDataProps>();
   const navigation = useNavigation();
 
   function handleGoBack() {
@@ -76,6 +80,9 @@ export function SignUpScreen() {
         <Controller
           control={control}
           name="name"
+          rules={{
+            required: "Name is required",
+          }}
           render={({ field: { onChange, value } }) => (
             <InputComponent
               placeholder="Name"
@@ -88,6 +95,13 @@ export function SignUpScreen() {
         <Controller
           control={control}
           name="email"
+          rules={{
+            required: "Email is required",
+            pattern: {
+              value: /^[A-Z0-9._%+-]+@[A-Z]+\.[A-Z]{2,}$/i,
+              message: "Email is invalid",
+            },
+          }}
           render={({ field: { onChange, value } }) => (
             <InputComponent
               placeholder="Email"
@@ -102,6 +116,9 @@ export function SignUpScreen() {
         <Controller
           control={control}
           name="password"
+          rules={{
+            required: "Password is required",
+          }}
           render={({ field: { onChange, value } }) => (
             <InputComponent
               placeholder="Password"
