@@ -16,6 +16,7 @@ import {
   Skeleton,
   Text,
   VStack,
+  useToast,
 } from "native-base";
 
 //components
@@ -29,6 +30,8 @@ const PHOTO_SIZE = 32;
 export function ProfileScreen() {
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
   const [userPhoto, setUserPhoto] = useState<string>();
+
+  const toast = useToast();
 
   async function handleSelectUserPhoto() {
     setPhotoIsLoading(true);
@@ -49,9 +52,12 @@ export function ProfileScreen() {
           photoSelected.assets[0].uri
         );
         if (photoInfo.size && photoInfo.size / (1024 * 1024) > 5) {
-          return Alert.alert(
-            "This image is too large. Please select other image smaller than 5MB"
-          );
+          return toast.show({
+            title:
+              "This image is too large. Please select an image smaller than 5MB",
+            placement: "top",
+            bgColor: "red.500",
+          });
         }
         console.log(photoInfo.size / (1024 * 1024));
 
