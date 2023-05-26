@@ -39,7 +39,10 @@ const signUpSchema = yup.object({
     .string()
     .required("Email is required")
     .email("This email is invalid"),
-  password: yup.string().required("Password is required"),
+  password: yup
+    .string()
+    .required("Password is required")
+    .min(8, "Password must be at least 8 characters long"),
 });
 
 export function SignUpScreen() {
