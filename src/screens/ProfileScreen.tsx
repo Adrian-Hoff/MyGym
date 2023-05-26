@@ -1,6 +1,9 @@
 //react
 import { useState } from "react";
-import { TouchableOpacity } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
+
+//file-system
+import * as FileSystem from "expo-file-system";
 
 //image-picker
 import * as ImagePicker from "expo-image-picker";
@@ -41,7 +44,19 @@ export function ProfileScreen() {
       if (photoSelected.canceled) {
         return;
       }
-      photoSelected.assets[0].uri && setUserPhoto(photoSelected.assets[0].uri);
+      if (photoSelected.assets[0].uri) {
+        const photoInfo = await FileSystem.getInfoAsync(
+          photoSelected.assets[0].uri
+        );
+        if (photoInfo.size && photoInfo.size / (1024 * 1024) > 5) {
+          return Alert.alert(
+            "This image is too large. Please select other image smaller than 5MB"
+          );
+        }
+        console.log(photoInfo.size / (1024 * 1024));
+
+        setUserPhoto(photoSelected.assets[0].uri);
+      }
     } catch (err) {
       console.log(err);
     } finally {
