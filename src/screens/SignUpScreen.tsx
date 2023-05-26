@@ -1,6 +1,9 @@
 //react-navigation
 import { useNavigation } from "@react-navigation/native";
 
+//react-hook-form
+import { Controller, useForm } from "react-hook-form";
+
 //native-base
 import {
   VStack,
@@ -21,10 +24,15 @@ import { InputComponent } from "@components/InputComponent";
 import { ButtonComponent } from "@components/ButtonComponent";
 
 export function SignUpScreen() {
+  const { control, handleSubmit } = useForm();
   const navigation = useNavigation();
 
   function handleGoBack() {
     navigation.goBack();
+  }
+
+  function handleSignUp(data: any) {
+    console.log(data);
   }
 
   return (
@@ -53,16 +61,51 @@ export function SignUpScreen() {
           </Heading>
         </Center>
 
-        <InputComponent placeholder="Name" />
+        <Controller
+          control={control}
+          name="name"
+          render={({ field: { onChange, value } }) => (
+            <InputComponent
+              placeholder="Name"
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+        ></Controller>
 
-        <InputComponent
-          placeholder="Email"
-          keyboardType="email-address"
-          autoCapitalize="none"
+        <Controller
+          control={control}
+          name="email"
+          render={({ field: { onChange, value } }) => (
+            <InputComponent
+              placeholder="Email"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+        ></Controller>
+
+        <Controller
+          control={control}
+          name="password"
+          render={({ field: { onChange, value } }) => (
+            <InputComponent
+              placeholder="Password"
+              secureTextEntry
+              onChangeText={onChange}
+              value={value}
+              returnKeyType="send"
+              onSubmitEditing={handleSubmit(handleSignUp)}
+            />
+          )}
+        ></Controller>
+
+        <ButtonComponent
+          title="Create Account"
+          onPress={handleSubmit(handleSignUp)}
         />
-        <InputComponent placeholder="Password" secureTextEntry />
-
-        <ButtonComponent title="Create Account" />
 
         <ButtonComponent
           mt={24}
