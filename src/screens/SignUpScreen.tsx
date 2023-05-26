@@ -88,6 +88,7 @@ export function SignUpScreen() {
               placeholder="Name"
               onChangeText={onChange}
               value={value}
+              errorMessage={errors.name?.message}
             />
           )}
         ></Controller>
@@ -109,6 +110,7 @@ export function SignUpScreen() {
               autoCapitalize="none"
               onChangeText={onChange}
               value={value}
+              errorMessage={errors.email?.message}
             />
           )}
         ></Controller>
@@ -127,6 +129,7 @@ export function SignUpScreen() {
               value={value}
               returnKeyType="send"
               onSubmitEditing={handleSubmit(handleSignUp)}
+              errorMessage={errors.password?.message}
             />
           )}
         ></Controller>
