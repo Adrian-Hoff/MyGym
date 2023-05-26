@@ -31,6 +31,7 @@ type FormDataProps = {
   name: string;
   email: string;
   password: string;
+  confirm_password: string;
 };
 
 const signUpSchema = yup.object({
@@ -43,6 +44,10 @@ const signUpSchema = yup.object({
     .string()
     .required("Password is required")
     .min(8, "Password must be at least 8 characters long"),
+  confirm_password: yup
+    .string()
+    .required("Confirm Password is required")
+    .oneOf([yup.ref("password")], "Passwords are not the same. Try again."),
 });
 
 export function SignUpScreen() {
@@ -59,12 +64,18 @@ export function SignUpScreen() {
     navigation.goBack();
   }
 
-  function handleSignUp({ name, email, password }: FormDataProps) {
+  function handleSignUp({
+    name,
+    email,
+    password,
+    confirm_password,
+  }: FormDataProps) {
     console.log(`
 
     Name: ${name} 
     Email: ${email} 
     Password: ${password}
+    Confirm Password: ${confirm_password}
 
     `);
   }
@@ -132,9 +143,23 @@ export function SignUpScreen() {
               secureTextEntry
               onChangeText={onChange}
               value={value}
+              errorMessage={errors.password?.message}
+            />
+          )}
+        ></Controller>
+
+        <Controller
+          control={control}
+          name="confirm_password"
+          render={({ field: { onChange, value } }) => (
+            <InputComponent
+              placeholder="Confirm Password"
+              secureTextEntry
+              onChangeText={onChange}
+              value={value}
               returnKeyType="send"
               onSubmitEditing={handleSubmit(handleSignUp)}
-              errorMessage={errors.password?.message}
+              errorMessage={errors.confirm_password?.message}
             />
           )}
         ></Controller>
