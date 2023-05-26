@@ -17,6 +17,7 @@ import {
   Heading,
   ScrollView,
   Flex,
+  Box,
 } from "native-base";
 
 //assets
@@ -26,6 +27,7 @@ import LogoSvg from "@assets/logo.svg";
 //components
 import { InputComponent } from "@components/InputComponent";
 import { ButtonComponent } from "@components/ButtonComponent";
+import { SafeAreaView } from "react-native";
 
 type FormDataProps = {
   name: string;
@@ -93,19 +95,11 @@ export function SignUpScreen() {
           resizeMode="contain"
           position={"absolute"}
         />
-        <Center my={24}>
-          <LogoSvg />
-          <Text color={"gray.100"} fontSize={"sm"}>
-            Train your mind and your body
-          </Text>
-        </Center>
-
-        <Center>
+        <Center pt={16}>
           <Heading fontFamily="heading" color="gray.100" fontSize="xl" mb={6}>
             Create your account
           </Heading>
         </Center>
-
         <Controller
           control={control}
           name="name"
@@ -118,7 +112,6 @@ export function SignUpScreen() {
             />
           )}
         ></Controller>
-
         <Controller
           control={control}
           name="email"
@@ -133,7 +126,6 @@ export function SignUpScreen() {
             />
           )}
         ></Controller>
-
         <Controller
           control={control}
           name="password"
@@ -147,7 +139,6 @@ export function SignUpScreen() {
             />
           )}
         ></Controller>
-
         <Controller
           control={control}
           name="confirm_password"
@@ -164,17 +155,18 @@ export function SignUpScreen() {
           )}
         ></Controller>
 
-        <ButtonComponent
-          title="Create Account"
-          onPress={handleSubmit(handleSignUp)}
-        />
-
-        <ButtonComponent
-          mt={24}
-          title="Back To Login"
-          variant={"outline"}
-          onPress={handleGoBack}
-        />
+        <Box flex={1} />
+        <VStack space={3}>
+          <ButtonComponent
+            title="Create Account"
+            onPress={handleSubmit(handleSignUp)}
+          />
+          <ButtonComponent
+            title="Back To Login"
+            variant={"outline"}
+            onPress={handleGoBack}
+          />
+        </VStack>
       </VStack>
     </ScrollView>
   );
