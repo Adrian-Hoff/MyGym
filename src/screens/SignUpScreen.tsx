@@ -4,6 +4,10 @@ import { useNavigation } from "@react-navigation/native";
 //react-hook-form
 import { Controller, useForm } from "react-hook-form";
 
+//yup
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+
 //native-base
 import {
   VStack,
@@ -29,12 +33,23 @@ type FormDataProps = {
   password: string;
 };
 
+const signUpSchema = yup.object({
+  name: yup.string().required("Name is required"),
+  email: yup
+    .string()
+    .required("Email is required")
+    .email("This email is invalid"),
+  password: yup.string().required("Password is required"),
+});
+
 export function SignUpScreen() {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormDataProps>();
+  } = useForm<FormDataProps>({
+    resolver: yupResolver(signUpSchema),
+  });
   const navigation = useNavigation();
 
   function handleGoBack() {
@@ -80,9 +95,6 @@ export function SignUpScreen() {
         <Controller
           control={control}
           name="name"
-          rules={{
-            required: "Name is required",
-          }}
           render={({ field: { onChange, value } }) => (
             <InputComponent
               placeholder="Name"
@@ -96,13 +108,6 @@ export function SignUpScreen() {
         <Controller
           control={control}
           name="email"
-          rules={{
-            required: "Email is required",
-            pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-Z]+\.[A-Z]{2,}$/i,
-              message: "Email is invalid",
-            },
-          }}
           render={({ field: { onChange, value } }) => (
             <InputComponent
               placeholder="Email"
@@ -118,9 +123,6 @@ export function SignUpScreen() {
         <Controller
           control={control}
           name="password"
-          rules={{
-            required: "Password is required",
-          }}
           render={({ field: { onChange, value } }) => (
             <InputComponent
               placeholder="Password"
