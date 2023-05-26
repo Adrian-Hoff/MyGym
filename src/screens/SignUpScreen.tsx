@@ -23,16 +23,28 @@ import LogoSvg from "@assets/logo.svg";
 import { InputComponent } from "@components/InputComponent";
 import { ButtonComponent } from "@components/ButtonComponent";
 
+type FormDataProps = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export function SignUpScreen() {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit } = useForm<FormDataProps>();
   const navigation = useNavigation();
 
   function handleGoBack() {
     navigation.goBack();
   }
 
-  function handleSignUp(data: any) {
-    console.log(data);
+  function handleSignUp({ name, email, password }: FormDataProps) {
+    console.log(`
+
+    Name: ${name} 
+    Email: ${email} 
+    Password: ${password}
+
+    `);
   }
 
   return (
